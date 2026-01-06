@@ -1,5 +1,4 @@
-​🚀 ¡Bienvenido a TECNO-TOOL-KP! 
- ​Para asegurar un proceso exitoso, sigue estas breves recomendaciones antes de empezar:
+​🚀 ¡Bienvenido a TECNO-TOOL-KP!  ​Para asegurar un proceso exitoso, sigue estas breves recomendaciones antes de empezar:
 
 ​📦 Instalación de ROM Stock
 ​Si tu objetivo es volver al software original, recuerda:
