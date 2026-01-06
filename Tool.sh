@@ -1,52 +1,47 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# --- CONFIGURACIÓN ---
-USER="KP"  # Cambia esto por tu nombre de GitHub
-REPO="TECNO-TOOL-KP"
-RAW_URL="https://raw.githubusercontent.com/$USER/$REPO/main"
+# Colores para que se vea bien
+VERDE='\033[0;32m'
+AZUL='\033[0;34m'
+AMARILLO='\033[1;33m'
+RESET='\033[0m'
 
-# --- INTERFAZ VISUAL ---
 clear
-echo -e "\e[1;36m======================================"
-echo -e "       TECNO TOOL KP v1.0"
-echo -e "======================================\e[0m"
+echo -e "${AZUL}=========================================="
+echo -e "      TECNO TOOL - MODO REPOSITORIO"
+echo -e "==========================================${RESET}"
 
-echo "1. Desbloquear Bootloader (Básico)"
-echo "2. Flashear Recovery + VBMETA (Desde Repositorio)"
-echo "3. Entrar a FastbootD (Para modelos nuevos)"
-echo "4. Salir"
-read -p "Selecciona una opción: " opcion
+echo -e "1) Desbloquear Bootloader"
+echo -e "2) Flashear Recovery + VBMETA (Antiloop)"
+echo -e "3) Reiniciar a FastbootD"
+echo -e "4) Salir"
+read -p "Selecciona una opción: " opt
 
-case $opcion in
+case $opt in
     1)
-        echo "Asegúrate de tener 'Desbloqueo OEM' activo."
+        echo -e "${AMARILLO}[!] Asegúrate de tener OEM Unlocking activo.${RESET}"
         adb reboot bootloader
         fastboot flashing unlock
         ;;
     2)
-        echo -e "\nModelos disponibles: Spark10Pro, Pova5, Camon20"
-        read -p "Escribe el modelo exacto: " modelo
+        echo -e "${AZUL}[?] Modelos: Spark10, Pova5, Camon20${RESET}"
+        read -p "Escribe el modelo: " modelo
+        # Aquí es donde el script baja archivos de tu repo
+        echo -e "${VERDE}[+] Descargando archivos para $modelo...${RESET}"
+        curl -L "https://raw.githubusercontent.com/Optimizadorww/TECNO-TOOL-KP/main/Modelos/$modelo/recovery.img" -o recovery.img
+        curl -L "https://raw.githubusercontent.com/Optimizadorww/TECNO-TOOL-KP/main/Modelos/$modelo/vbmeta.img" -o vbmeta.img
         
-        echo -e "\e[1;33mDescargando archivos para $modelo...\e[0m"
-        
-        # Descarga de archivos usando la estructura del repo
-        curl -L "$RAW_URL/$modelo/recovery.img" -o recovery.img
-        curl -L "$RAW_URL/$modelo/vbmeta.img" -o vbmeta.img
-        
-        echo "Flasheando Recovery..."
         fastboot flash recovery recovery.img
-        
-        echo "Flasheando VBMETA (Antiloop)..."
         fastboot flash vbmeta --disable-verity --disable-verification vbmeta.img
-        
-        echo -e "\e[1;32m¡Proceso terminado!\e[0m"
-        rm recovery.img vbmeta.img # Limpia archivos temporales
+        echo -e "${VERDE}[+] Proceso completado.${RESET}"
         ;;
     3)
-        echo "Reiniciando a FastbootD..."
         adb reboot fastboot
         ;;
     4)
-        exit
+        exit 0
+        ;;
+    *)
+        echo "Opción no válida."
         ;;
 esac
