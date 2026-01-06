@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # --- CONFIGURACIÓN ---
-USER="TuUsuario"  # Cambia esto por tu nombre de GitHub
+USER="KP"  # Cambia esto por tu nombre de GitHub
 REPO="TECNO-TOOL-KP"
 RAW_URL="https://raw.githubusercontent.com/$USER/$REPO/main"
 
