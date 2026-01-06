@@ -1,11 +1,11 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# Colores
+# Colores estilo Hacker
 VERDE='\033[1;32m'
 NC='\033[0m'
 
-# Ruta de descargas de Android
-DOWNLOAD_DIR="/sdcard/Download"
+# Ruta directa a descargas
+SDCARD="/sdcard/Download"
 
 clear
 echo -e "${VERDE}"
@@ -16,54 +16,46 @@ echo "    | |/ _ \/ __| '_ \ / _ \     | |/ _ \ / _ \ | |"
 echo "    | |  __/ (__| | | | (_) |    | | (_) | (_) || |"
 echo "    |_|\___|\___|_| |_|\___/     |_|\___/ \___/ |_|"
 echo "                                                     "
-echo "        Creador AntiKripis          "
+echo "          DIRECT SUPER FLASH MODE - TECNO            "
 echo "====================================================="
 echo ""
 echo " 1) Desbloquear Bootloader"
-echo " 2) Flashear Recovery (Desde Repositorio)"
-echo " 3) Reiniciar a Modo FastbootD (OBLIGATORIO)"
-echo " 4) Flashear ROM (Busca super.img en Descargas)"
-echo " 5) Salir"
+echo " 2) Entrar a Modo FastbootD (Letras Rojas)"
+echo " 3) ¡FLASH DIRECTO SUPER.IMG! (Desde Descargas)"
+echo " 4) Salir"
 echo ""
-read -p " SELECCIONA UNA OPCIÓN: " opt
+read -p " OPCIÓN: " opt
 
 case $opt in
     1)
-        echo -e "\n[!] Reiniciando a Bootloader..."
-        adb reboot bootloader
-        fastboot flashing unlock
+        adb reboot bootloader && fastboot flashing unlock
         ;;
     2)
-        read -p " Escribe el modelo: " modelo
-        echo -e "\n[+] Descargando Recovery..."
-        curl -L "https://raw.githubusercontent.com/Optimizadorww/TECNO-TOOL-KP/main/Modelos/$modelo/recovery.img" -o recovery.img
-        if [ -f "recovery.img" ]; then
-            fastboot flash recovery recovery.img
-            rm recovery.img
-            echo -e "[✔] Recovery instalado."
-        else
-            echo -e "[✘] Error: No se encontró el archivo en GitHub."
-        fi
-        ;;
-    3)
-        echo -e "\n[+] Entrando a FastbootD..."
+        echo -e "\n[+] Reiniciando a FastbootD..."
         adb reboot fastboot
         ;;
-    4)
-        echo -e "\n[!] ESCANEANDO CARPETA DE DESCARGAS..."
+    3)
+        echo -e "\n[!] Buscando super.img en /sdcard/Download..."
         
-        # Comprobar si tenemos acceso a la memoria
-        if [ ! -d "$DOWNLOAD_DIR" ]; then
-            echo -e "[!] Error de acceso. Ejecutando termux-setup-storage..."
-            termux-setup-storage
-            echo "Por favor, acepta el permiso en pantalla y vuelve a ejecutar la opción 4."
+        if [ -f "$SDCARD/super.img" ]; then
+            echo -e "[✔] Encontrado. Preparando flasheo..."
+            # Flasheo directo
+            fastboot flash super "$SDCARD/super.img"
+            
+            echo -e "\n[✔] Flasheo de SUPER terminado."
+            read -p "¿Reiniciar teléfono? (s/n): " rin
+            [ "$rin" = "s" ] && fastboot reboot
         else
-            # Buscar archivos
-            SUPER_PATH="$DOWNLOAD_DIR/super.img"
-            BOOT_PATH="$DOWNLOAD_DIR/boot.img"
-
-            if [ -f "$SUPER_PATH" ] && [ -f "$BOOT_PATH" ]; then
-                echo -e " [✔] Archivos encontrados en: $DOWNLOAD_DIR"
-                read -p " ¿Deseas flashear super.img y boot.img ahora? (s/n): " confirm
-                if [ "$confirm" = "s" ]; then
-                    echo -
+            echo -e "\n[✘] Error: No existe el archivo 'super.img' en Descargas."
+            echo "Asegúrate de que el nombre sea exactamente super.img (minúsculas)."
+        fi
+        ;;
+    4)
+        echo -e " Saliendo...\n${NC}"
+        exit 0
+        ;;
+    *)
+        TecnoTool
+        ;;
+esac
+echo -e "${NC}"
