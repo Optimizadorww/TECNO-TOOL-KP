@@ -1,22 +1,20 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-echo -e "\e[1;32m[+] Instalando dependencias necesarias...\e[0m"
+echo "Preparando entorno..."
 
-# Actualizar paquetes e instalar android-tools y curl
-pkg update -y && pkg upgrade -y
-pkg install android-tools curl wget -y
+# 1. Instalar herramientas necesarias
+pkg update -y
+pkg install android-tools curl -y
 
-# Dar permisos de almacenamiento
-termux-setup-storage
+# 2. Descargar el script principal
+# Usamos -L para seguir redirecciones de GitHub y -o para ponerle nombre
+curl -L "https://raw.githubusercontent.com/Optimizadorww/TECNO-TOOL-KP/main/Tool.sh" -o Tool.sh
 
-# Descargar el script principal de la herramienta
-echo -e "\e[1;32m[+] Descargando TecnoToolKP...\e[0m"
-curl -L "https://raw.githubusercontent.com/KP/TECNO-TOOL-KP/Tool.sh" -o Tool.sh
+# 3. Dar permisos de ejecución (Crucial para evitar 'Permiso denegado')
+chmod +x Tool.sh
 
-# Dar permisos de ejecución
-chmod +x tecno.sh
-
-echo -e "\e[1;34m======================================="
-echo -e " Instalación completada con éxito."
-echo -e " Para iniciar usa: ./Tool.sh"
-echo -e "=======================================\e[0m"
+# 4. Mensaje final
+echo "----------------------------------------"
+echo "Instalación terminada."
+echo "Para iniciar la herramienta escribe: ./Tool.sh"
+echo "----------------------------------------"
