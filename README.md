@@ -4,6 +4,7 @@
 ​📦 Instalación de ROM Stock
 
 ​Si tu objetivo es volver al software original, recuerda:
+
 ​Descarga y Descomprime:  la ROM oficial de tu modelo y extrae su contenido.
 ​Ubica el Archivo:  super.img.
 ​Cópialo directamente en la carpeta de Descargas de tu teléfono móvil.
