@@ -1,1 +1,18 @@
-Recuerda que si quieres Flashear La Rom stock Tienes wue descargarla y Descomprimirla y poner el Archivo Super.img de Tu Rom en la carpeta de descargas de tu teléfono y Lo mismo Cuando Vallas a instalar un recovery Tiene que tener exactamente el nombre (Recovery.img)
+​🚀 ¡Bienvenido a TECNO-TOOL-KP!
+​Para asegurar un proceso exitoso, sigue estas breves recomendaciones antes de empezar:
+
+​📦 Instalación de ROM Stock
+​Si tu objetivo es volver al software original, recuerda:
+​Descarga y Descomprime: Obtén la ROM oficial de tu modelo y extrae su contenido.
+​Ubica el Archivo: Busca el archivo llamado super.img.
+​Carpeta Correcta: Cópialo directamente en la carpeta de Descargas de tu teléfono móvil.
+
+​🛠️ Instalación de Recovery Custom
+​Si vas a instalar un Recovery personalizado (como TWRP o OrangeFox):
+​Asegúrate de que el archivo esté en la carpeta de Descargas.
+​¡Muy Importante! El archivo debe tener este nombre exacto!
+
+👉 recovery.img (respeta las minúsculas).
+
+​💡 Consejo de Oro
+​"Tener los archivos con el nombre correcto y en la carpeta de Descargas es la clave para que la herramienta haga su magia sin errores."
