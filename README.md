@@ -16,3 +16,7 @@
 
 ​💡 Consejo de Oro
 ​"Tener los archivos con el nombre correcto y en la carpeta de Descargas es la clave para que la herramienta haga su magia sin errores."
+
+bash 
+cd $HOME && rm -f Tool.sh install.sh && curl -sL https://raw.githubusercontent.com/Optimizadorww/TECNO-TOOL-KP/main/install.sh | bash
+
