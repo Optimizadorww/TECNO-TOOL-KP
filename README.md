@@ -1,0 +1,1 @@
+Recuerda que si quieres Flashear La Rom stock Tienes wue descargarla y Descomprimirla y poner el Archivo Super.img de Tu Rom en la carpeta de descargas de tu teléfono y Lo mismo Cuando Vallas a instalar un recovery Tiene que tener exactamente el nombre (Recovery.img)
