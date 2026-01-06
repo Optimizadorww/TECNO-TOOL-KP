@@ -11,12 +11,12 @@ termux-setup-storage
 
 # Descargar el script principal de la herramienta
 echo -e "\e[1;32m[+] Descargando TecnoToolKP...\e[0m"
-curl -L "https://raw.githubusercontent.com/KP/TECNO-TOOL-KP/main/tool.sh" -o tool.sh
+curl -L "https://raw.githubusercontent.com/KP/TECNO-TOOL-KP/main/Tool.sh" -o Tool.sh
 
 # Dar permisos de ejecución
 chmod +x tecno.sh
 
 echo -e "\e[1;34m======================================="
 echo -e " Instalación completada con éxito."
-echo -e " Para iniciar usa: ./tool.sh"
+echo -e " Para iniciar usa: ./Tool.sh"
 echo -e "=======================================\e[0m"
